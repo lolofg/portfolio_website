@@ -3,203 +3,513 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Your Name – Portfolio</title>
-  <meta name="description" content="Portfolio of Your Name: projects, experience and contact details.">
+  <title>Congratulations! You’re a winner!</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light;
-      --paper: #f3f5f2;
-      --ink: #18211d;
-      --muted: #56665e;
-      --pine: #2e6b4f;
-      --line: #d3dcd6;
-      --font: "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --bg: #fff3c4;
+      --ink: #241a00;
+      --muted: #6b5a1f;
+      --ad: #ffe14d;
+      --ad-ink: #1f1600;
+      --ad-edge: #241a00;
+      --red: #d7263d;
+      --on-red: #ffffff;
+      --track: #fff7cc;
+      --display: "Bungee", Impact, "Arial Black", system-ui, sans-serif;
+      --body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     }
     @media (prefers-color-scheme: dark) {
       :root {
         color-scheme: dark;
-        --paper: #121815;
-        --ink: #e4ebe7;
-        --muted: #9aaba2;
-        --pine: #82c6a3;
-        --line: #2a352f;
+        --bg: #17130a;
+        --ink: #f4ecd2;
+        --muted: #c2b48a;
+        --ad-edge: #000000;
       }
     }
 
     *, *::before, *::after { box-sizing: border-box; }
 
-    html { -webkit-text-size-adjust: 100%; }
-
     body {
       margin: 0;
-      background: var(--paper);
+      background: var(--bg);
       color: var(--ink);
-      font-family: var(--font);
+      font-family: var(--body);
       font-size: 1.0625rem;
-      line-height: 1.6;
+      line-height: 1.55;
+      overflow-x: hidden;
     }
+
+    /* Scrolling banner */
+    .marquee {
+      background: var(--red);
+      color: var(--on-red);
+      font-family: var(--display);
+      font-size: 0.9375rem;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 0.5rem 0;
+    }
+    .marquee-track {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll 18s linear infinite;
+    }
+    @keyframes scroll { to { transform: translateX(-100%); } }
 
     .page {
-      max-width: 44rem;
+      max-width: 38rem;
       margin: 0 auto;
-      padding: clamp(3rem, 10vw, 7rem) 1.5rem 3rem;
+      padding: clamp(1.75rem, 6vw, 3.5rem) 1.25rem 3rem;
     }
 
-    a {
-      color: var(--pine);
-      text-decoration-thickness: 1px;
-      text-underline-offset: 0.2em;
-    }
-    a:hover { text-decoration-thickness: 2px; }
-    a:focus-visible {
-      outline: 2px solid var(--pine);
-      outline-offset: 3px;
-      border-radius: 2px;
+    .ad {
+      background: var(--ad);
+      color: var(--ad-ink);
+      border: 4px solid var(--ad-edge);
+      border-radius: 6px;
+      box-shadow: 8px 8px 0 var(--red);
+      padding: clamp(1.25rem, 5vw, 2.25rem);
+      text-align: center;
     }
 
-    /* Hero: the name is the design */
-    .hero h1 {
-      margin: 0;
-      font-size: clamp(3rem, 12vw, 6rem);
-      font-weight: 800;
-      line-height: 0.95;
-      letter-spacing: -0.035em;
-    }
-    .hero p {
-      margin: 1.5rem 0 0;
-      max-width: 32rem;
-      font-size: 1.25rem;
-      line-height: 1.5;
-      color: var(--muted);
-    }
-
-    section { margin-top: clamp(3.5rem, 9vw, 5.5rem); }
-
-    h2 {
-      margin: 0 0 1.25rem;
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-    }
-
-    .about p { margin: 0 0 1rem; max-width: 38rem; }
-
-    /* Projects: a plain list, separated by rules */
-    .projects ul { list-style: none; margin: 0; padding: 0; }
-    .projects li {
-      padding: 1.5rem 0;
-      border-top: 1px solid var(--line);
-    }
-    .projects li:last-child { border-bottom: 1px solid var(--line); }
-    .projects h3 {
-      margin: 0;
-      font-size: 1.1875rem;
-      font-weight: 700;
-    }
-    .projects p { margin: 0.375rem 0 0; color: var(--muted); max-width: 36rem; }
-    .projects .stack {
-      margin-top: 0.625rem;
-      font-size: 0.9375rem;
-      color: var(--ink);
-    }
-    .projects .links {
-      margin-top: 0.625rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.25rem 1.25rem;
-      font-size: 0.9375rem;
-      font-weight: 500;
-    }
-
-    .contact p { margin: 0 0 0.5rem; }
-    .contact .email {
+    .visitor {
       display: inline-block;
-      margin-top: 0.25rem;
-      font-size: clamp(1.25rem, 5vw, 1.75rem);
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      word-break: break-word;
+      margin: 0;
+      padding: 0.25rem 0.75rem;
+      background: var(--ad-ink);
+      color: var(--ad);
+      font-family: var(--display);
+      font-size: 1rem;
+      border-radius: 4px;
+      font-variant-numeric: tabular-nums;
     }
-    .contact .elsewhere {
+
+    h1, h2 {
+      font-family: var(--display);
+      font-weight: 400;
+      line-height: 1.05;
+      margin: 1rem 0 0;
+    }
+    h1 {
+      font-size: clamp(2.25rem, 11vw, 4rem);
+      color: var(--red);
+      text-shadow: 3px 3px 0 var(--ad-ink);
+      animation: wobble 1.6s ease-in-out infinite;
+    }
+    @keyframes wobble {
+      0%, 100% { transform: rotate(-2deg) scale(1); }
+      50% { transform: rotate(2deg) scale(1.05); }
+    }
+    h2 { font-size: clamp(1.75rem, 8vw, 2.75rem); }
+
+    .ad p { margin: 1rem auto 0; max-width: 28rem; }
+    .prize { font-size: 1.1875rem; font-weight: 600; }
+
+    /* The button that runs away */
+    .arena {
+      position: relative;
+      height: 10rem;
       margin-top: 1.25rem;
+    }
+    .claim {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      padding: 1rem 1.5rem;
+      font-family: var(--display);
+      font-size: 1.125rem;
+      color: var(--on-red);
+      background: var(--red);
+      border: 3px solid var(--ad-ink);
+      border-radius: 8px;
+      box-shadow: 4px 4px 0 var(--ad-ink);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: left 0.18s ease-out, top 0.18s ease-out;
+    }
+    .claim.moved { transform: none; }
+    .claim:active { box-shadow: 1px 1px 0 var(--ad-ink); }
+    .claim:focus-visible, .btn:focus-visible {
+      outline: 3px solid var(--ad-ink);
+      outline-offset: 4px;
+    }
+    .claim.ready { animation: pulse 0.8s ease-in-out infinite; }
+    @keyframes pulse {
+      0%, 100% { scale: 1; }
+      50% { scale: 1.08; }
+    }
+
+    .taunt {
+      min-height: 1.6em;
+      font-weight: 700;
+      font-size: 1.125rem;
+    }
+    .fine {
+      font-size: 0.8125rem;
+      color: var(--ad-ink);
+      opacity: 0.75;
+    }
+
+    /* Loading */
+    .bar {
+      margin: 1.75rem auto 0;
+      max-width: 26rem;
+      height: 26px;
+      background: var(--track);
+      border: 3px solid var(--ad-ink);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      width: 0;
+      background: repeating-linear-gradient(-45deg, var(--red) 0 14px, #ff5a6e 14px 28px);
+      background-size: 40px 40px;
+      transition: width 0.6s ease;
+      animation: stripes 0.6s linear infinite;
+    }
+    @keyframes stripes { to { background-position: 40px 0; } }
+    .step { font-weight: 600; min-height: 1.6em; }
+
+    /* Reveal */
+    .video {
+      position: relative;
+      margin-top: 1.5rem;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      background: #000;
+      border: 4px solid var(--ad-ink);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .video iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .actions {
+      margin-top: 1.5rem;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.25rem 1.5rem;
-      font-weight: 500;
+      gap: 0.75rem;
+      justify-content: center;
     }
+    .btn {
+      padding: 0.75rem 1.25rem;
+      font: inherit;
+      font-weight: 700;
+      color: var(--ad-ink);
+      background: #ffffff;
+      border: 3px solid var(--ad-ink);
+      border-radius: 8px;
+      box-shadow: 3px 3px 0 var(--ad-ink);
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn.primary { background: var(--red); color: var(--on-red); }
+    .reveal-in { animation: pop 0.5s cubic-bezier(.2, 1.6, .4, 1) both; }
+    @keyframes pop {
+      from { transform: scale(0.6) rotate(-6deg); opacity: 0; }
+      to { transform: scale(1) rotate(0); opacity: 1; }
+    }
+
+    .small {
+      margin-top: 1rem;
+      font-size: 0.875rem;
+    }
+    .small a { color: inherit; }
 
     footer {
-      margin-top: clamp(4rem, 10vw, 6rem);
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--line);
-      font-size: 0.9375rem;
+      margin-top: 2.5rem;
+      text-align: center;
+      font-size: 0.875rem;
       color: var(--muted);
     }
-    footer p { margin: 0; }
+
+    canvas#confetti {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    [hidden] { display: none !important; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track, h1, .claim.ready, .bar-fill, .reveal-in { animation: none; }
+      .marquee-track { padding-left: 0; }
+      .claim { transition: none; }
+    }
   </style>
 </head>
 <body>
+  <div class="marquee" aria-hidden="true">
+    <span class="marquee-track">★ YOU ARE A WINNER ★ 100% LEGIT ★ NOT A SCAM ★ DEFINITELY NOT A SCAM ★ ACT NOW ★ OFFER EXPIRES NEVER ★ CLICK THE BUTTON ★</span>
+  </div>
+
   <main class="page">
 
-    <!-- Replace "Your Name" and the short intro below -->
-    <header class="hero">
-      <h1>Your Name</h1>
-      <p>I’m a developer who likes building things and understanding how they work, from web pages down to the server they run on.</p>
-    </header>
-
-    <section class="about" aria-labelledby="about-heading">
-      <h2 id="about-heading">About</h2>
-      <p>Write two or three sentences about yourself here: what you’re studying or working on, what kind of projects you enjoy, and what you’re looking for next.</p>
-      <p>This site is a work in progress. More projects are on the way.</p>
-    </section>
-
-    <section class="projects" aria-labelledby="projects-heading">
-      <h2 id="projects-heading">Projects</h2>
-      <ul>
-        <li>
-          <h3>Self-hosted home server</h3>
-          <p>Turned an old ThinkPad into a home server that runs this website, uptime monitoring and other services. Set up remote access with SSH keys, a firewall, and a Cloudflare Tunnel so the site is public without opening any ports.</p>
-          <p class="stack">Ubuntu Server, Docker, Caddy, Cloudflare Tunnel</p>
-        </li>
-        <li>
-          <h3>Project name</h3>
-          <p>One or two sentences on what it does, who it’s for, and what you learned building it.</p>
-          <p class="stack">Tools and languages you used</p>
-          <div class="links">
-            <a href="#">View project</a>
-            <a href="#">Source code</a>
-          </div>
-        </li>
-        <li>
-          <h3>Project name</h3>
-          <p>One or two sentences on what it does, who it’s for, and what you learned building it.</p>
-          <p class="stack">Tools and languages you used</p>
-          <div class="links">
-            <a href="#">View project</a>
-            <a href="#">Source code</a>
-          </div>
-        </li>
-      </ul>
-    </section>
-
-    <section class="contact" aria-labelledby="contact-heading">
-      <h2 id="contact-heading">Contact</h2>
-      <p>Want to work together or just say hi? Send me an email.</p>
-      <!-- Replace both instances of the email address -->
-      <a class="email" href="mailto:you@example.com">you@example.com</a>
-      <div class="elsewhere">
-        <a href="https://github.com/yourusername">GitHub</a>
-        <a href="https://www.linkedin.com/in/yourusername">LinkedIn</a>
+    <!-- Stage 1: the offer -->
+    <section class="ad" id="offer" aria-labelledby="offer-heading">
+      <p class="visitor">Visitor #<span id="visitor">0</span></p>
+      <h1 id="offer-heading">Congratulations!</h1>
+      <p class="prize">You are the one millionth visitor to beratmurseli.com. You’ve won a brand new laptop!*</p>
+      <div class="arena" id="arena">
+        <button type="button" class="claim" id="claim">Claim my prize</button>
       </div>
+      <p class="taunt" id="taunt" aria-live="polite"></p>
+      <p class="fine">*Slightly used. Currently hosting this website. Collection not possible.</p>
+    </section>
+
+    <!-- Stage 2: fake loading -->
+    <section class="ad" id="loading" aria-labelledby="loading-heading" hidden>
+      <h2 id="loading-heading">Preparing your prize…</h2>
+      <div class="bar" aria-hidden="true"><div class="bar-fill" id="barFill"></div></div>
+      <p class="step" id="step" aria-live="polite"></p>
+    </section>
+
+    <!-- Stage 3: the reveal -->
+    <section class="ad" id="reveal" aria-labelledby="reveal-heading" hidden>
+      <h2 id="reveal-heading">You’ve been rickrolled.</h2>
+      <p>There was never a laptop. There was only Rick.</p>
+      <div class="video" id="video"></div>
+      <div class="actions">
+        <button type="button" class="btn primary" id="share">Copy link to trap a friend</button>
+        <button type="button" class="btn" id="again">Fall for it again</button>
+      </div>
+      <p class="small" id="shareMsg" aria-live="polite"></p>
+      <p class="small">Video not playing? <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener">Watch it on YouTube</a>.</p>
     </section>
 
     <footer>
-      <p>This site runs on a ThinkPad L390 on my desk.</p>
+      <p>Served with love from a ThinkPad in Berat’s room.</p>
     </footer>
-
   </main>
+
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <script>
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const $ = id => document.getElementById(id);
+
+    /* ---------- Sound effects (made with the Web Audio API) ---------- */
+    let audio;
+    function getAudio() {
+      if (!audio) {
+        const Ctx = window.AudioContext || window.webkitAudioContext;
+        if (!Ctx) return null;
+        audio = new Ctx();
+      }
+      if (audio.state === 'suspended') audio.resume();
+      return audio;
+    }
+    function tone(freq, start, length, type = 'square', volume = 0.08, slideTo) {
+      const ctx = getAudio();
+      if (!ctx) return;
+      const t = ctx.currentTime + start;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, t);
+      if (slideTo) osc.frequency.exponentialRampToValueAtTime(slideTo, t + length);
+      gain.gain.setValueAtTime(volume, t);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t + length);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(t);
+      osc.stop(t + length + 0.05);
+    }
+    const boing = () => tone(180, 0, 0.25, 'sine', 0.15, 720);
+    const blip = () => tone(880, 0, 0.06, 'square', 0.04);
+    function fanfare() {
+      [523, 659, 784, 1047].forEach((f, i) => tone(f, i * 0.11, 0.16, 'square', 0.06));
+      tone(1047, 0.44, 0.5, 'triangle', 0.09);
+    }
+
+    /* ---------- Visitor counter ---------- */
+    (function countUp() {
+      const target = 1000000;
+      const el = $('visitor');
+      if (reduceMotion) { el.textContent = target.toLocaleString('en-US'); return; }
+      const startTime = performance.now();
+      const duration = 1800;
+      function frame(now) {
+        const p = Math.min(1, (now - startTime) / duration);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased).toLocaleString('en-US');
+        if (p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    })();
+
+    /* ---------- The runaway button ---------- */
+    const arena = $('arena');
+    const claim = $('claim');
+    const taunt = $('taunt');
+    const taunts = ['Too slow.', 'Nope.', 'Okay okay. One more try.'];
+    const labels = ['Claim my prize', 'Claim it anyway', 'Try again', 'Fine, click me'];
+    let dodges = 0;
+
+    function dodge() {
+      if (dodges >= taunts.length) return false;
+      const maxX = arena.clientWidth - claim.offsetWidth;
+      const maxY = arena.clientHeight - claim.offsetHeight;
+      claim.classList.add('moved');
+      claim.style.left = Math.max(0, Math.random() * maxX) + 'px';
+      claim.style.top = Math.max(0, Math.random() * maxY) + 'px';
+      taunt.textContent = taunts[dodges];
+      dodges++;
+      claim.textContent = labels[dodges];
+      if (dodges === taunts.length) claim.classList.add('ready');
+      boing();
+      return true;
+    }
+
+    claim.addEventListener('pointerenter', e => {
+      if (e.pointerType === 'mouse') dodge();
+    });
+    claim.addEventListener('click', () => {
+      getAudio();
+      if (dodge()) return;
+      startLoading();
+    });
+
+    /* ---------- Fake loading ---------- */
+    const steps = [
+      'Verifying you’re a real human…',
+      'Asking the laptop nicely…',
+      'Bribing the fan…',
+      'Downloading 4 GB of free RAM…',
+      'Wrapping your prize…',
+      'Almost there…'
+    ];
+
+    function startLoading() {
+      $('offer').hidden = true;
+      $('loading').hidden = false;
+      const fillEl = $('barFill');
+      const stepEl = $('step');
+      fillEl.style.width = '0';
+      let i = 0;
+      function next() {
+        if (i < steps.length) {
+          stepEl.textContent = steps[i];
+          fillEl.style.width = ((i + 1) / steps.length * 100) + '%';
+          blip();
+          i++;
+          setTimeout(next, 750);
+        } else {
+          setTimeout(showReveal, 400);
+        }
+      }
+      next();
+    }
+
+    /* ---------- The reveal ---------- */
+    function showReveal() {
+      $('loading').hidden = true;
+      const reveal = $('reveal');
+      reveal.hidden = false;
+      reveal.classList.remove('reveal-in');
+      void reveal.offsetWidth;
+      reveal.classList.add('reveal-in');
+
+      $('video').innerHTML =
+        '<iframe src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1&rel=0" ' +
+        'title="The video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+
+      fanfare();
+      confetti();
+    }
+
+    $('share').addEventListener('click', async () => {
+      const msg = $('shareMsg');
+      try {
+        await navigator.clipboard.writeText(location.href);
+        msg.textContent = 'Link copied. Send it to someone who trusts you.';
+      } catch {
+        msg.textContent = 'Couldn’t copy automatically. Copy the address from your browser’s address bar instead.';
+      }
+    });
+
+    $('again').addEventListener('click', () => {
+      $('reveal').hidden = true;
+      $('video').innerHTML = '';
+      $('shareMsg').textContent = '';
+      dodges = 0;
+      claim.classList.remove('moved', 'ready');
+      claim.style.left = '';
+      claim.style.top = '';
+      claim.textContent = labels[0];
+      taunt.textContent = '';
+      $('offer').hidden = false;
+    });
+
+    /* ---------- Confetti ---------- */
+    const canvas = $('confetti');
+    const ctx = canvas.getContext('2d');
+    let pieces = [];
+    let running = false;
+
+    function sizeCanvas() {
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = innerWidth * dpr;
+      canvas.height = innerHeight * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function confetti() {
+      if (reduceMotion) return;
+      sizeCanvas();
+      const colors = ['#d7263d', '#ffe14d', '#1b98e0', '#2ec4b6', '#ff8c42', '#9b5de5'];
+      for (let i = 0; i < 180; i++) {
+        pieces.push({
+          x: innerWidth / 2 + (Math.random() - 0.5) * 120,
+          y: innerHeight * 0.35,
+          vx: (Math.random() - 0.5) * 16,
+          vy: -6 - Math.random() * 12,
+          w: 6 + Math.random() * 6,
+          h: 8 + Math.random() * 10,
+          rot: Math.random() * Math.PI,
+          vr: (Math.random() - 0.5) * 0.3,
+          color: colors[i % colors.length],
+          life: 0
+        });
+      }
+      if (!running) { running = true; requestAnimationFrame(draw); }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
+      pieces.forEach(p => {
+        p.vy += 0.35;
+        p.vx *= 0.99;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rot += p.vr;
+        p.life++;
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h * Math.abs(Math.cos(p.life * 0.15)));
+        ctx.restore();
+      });
+      pieces = pieces.filter(p => p.y < innerHeight + 40);
+      if (pieces.length) requestAnimationFrame(draw);
+      else { running = false; ctx.clearRect(0, 0, innerWidth, innerHeight); }
+    }
+
+    window.addEventListener('resize', () => { if (running) sizeCanvas(); });
+  </script>
 </body>
 </html>
