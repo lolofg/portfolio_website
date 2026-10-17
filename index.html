@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Name – Portfolio</title>
+  <meta name="description" content="Portfolio of Your Name: projects, experience and contact details.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f3f5f2;
+      --ink: #18211d;
+      --muted: #56665e;
+      --pine: #2e6b4f;
+      --line: #d3dcd6;
+      --font: "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --paper: #121815;
+        --ink: #e4ebe7;
+        --muted: #9aaba2;
+        --pine: #82c6a3;
+        --line: #2a352f;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 44rem;
+      margin: 0 auto;
+      padding: clamp(3rem, 10vw, 7rem) 1.5rem 3rem;
+    }
+
+    a {
+      color: var(--pine);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 0.2em;
+    }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible {
+      outline: 2px solid var(--pine);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    /* Hero: the name is the design */
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(3rem, 12vw, 6rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.035em;
+    }
+    .hero p {
+      margin: 1.5rem 0 0;
+      max-width: 32rem;
+      font-size: 1.25rem;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    section { margin-top: clamp(3.5rem, 9vw, 5.5rem); }
+
+    h2 {
+      margin: 0 0 1.25rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .about p { margin: 0 0 1rem; max-width: 38rem; }
+
+    /* Projects: a plain list, separated by rules */
+    .projects ul { list-style: none; margin: 0; padding: 0; }
+    .projects li {
+      padding: 1.5rem 0;
+      border-top: 1px solid var(--line);
+    }
+    .projects li:last-child { border-bottom: 1px solid var(--line); }
+    .projects h3 {
+      margin: 0;
+      font-size: 1.1875rem;
+      font-weight: 700;
+    }
+    .projects p { margin: 0.375rem 0 0; color: var(--muted); max-width: 36rem; }
+    .projects .stack {
+      margin-top: 0.625rem;
+      font-size: 0.9375rem;
+      color: var(--ink);
+    }
+    .projects .links {
+      margin-top: 0.625rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1.25rem;
+      font-size: 0.9375rem;
+      font-weight: 500;
+    }
+
+    .contact p { margin: 0 0 0.5rem; }
+    .contact .email {
+      display: inline-block;
+      margin-top: 0.25rem;
+      font-size: clamp(1.25rem, 5vw, 1.75rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      word-break: break-word;
+    }
+    .contact .elsewhere {
+      margin-top: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.25rem 1.5rem;
+      font-weight: 500;
+    }
+
+    footer {
+      margin-top: clamp(4rem, 10vw, 6rem);
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+      font-size: 0.9375rem;
+      color: var(--muted);
+    }
+    footer p { margin: 0; }
+  </style>
+</head>
+<body>
+  <main class="page">
+
+    <!-- Replace "Your Name" and the short intro below -->
+    <header class="hero">
+      <h1>Your Name</h1>
+      <p>I’m a developer who likes building things and understanding how they work, from web pages down to the server they run on.</p>
+    </header>
+
+    <section class="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">About</h2>
+      <p>Write two or three sentences about yourself here: what you’re studying or working on, what kind of projects you enjoy, and what you’re looking for next.</p>
+      <p>This site is a work in progress. More projects are on the way.</p>
+    </section>
+
+    <section class="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Projects</h2>
+      <ul>
+        <li>
+          <h3>Self-hosted home server</h3>
+          <p>Turned an old ThinkPad into a home server that runs this website, uptime monitoring and other services. Set up remote access with SSH keys, a firewall, and a Cloudflare Tunnel so the site is public without opening any ports.</p>
+          <p class="stack">Ubuntu Server, Docker, Caddy, Cloudflare Tunnel</p>
+        </li>
+        <li>
+          <h3>Project name</h3>
+          <p>One or two sentences on what it does, who it’s for, and what you learned building it.</p>
+          <p class="stack">Tools and languages you used</p>
+          <div class="links">
+            <a href="#">View project</a>
+            <a href="#">Source code</a>
+          </div>
+        </li>
+        <li>
+          <h3>Project name</h3>
+          <p>One or two sentences on what it does, who it’s for, and what you learned building it.</p>
+          <p class="stack">Tools and languages you used</p>
+          <div class="links">
+            <a href="#">View project</a>
+            <a href="#">Source code</a>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
+      <p>Want to work together or just say hi? Send me an email.</p>
+      <!-- Replace both instances of the email address -->
+      <a class="email" href="mailto:you@example.com">you@example.com</a>
+      <div class="elsewhere">
+        <a href="https://github.com/yourusername">GitHub</a>
+        <a href="https://www.linkedin.com/in/yourusername">LinkedIn</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>This site runs on a ThinkPad L390 on my desk.</p>
+    </footer>
+
+  </main>
+</body>
+</html>
